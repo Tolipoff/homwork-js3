@@ -101,12 +101,12 @@ const data = [
 ];
 
 const ul = document.querySelector("ul");
-const ulContent = document.createDocumentFragment(" ");
+const ulList = document.createDocumentFragment(" ");
 
-function userFunction(tagName, className) {
-  var tagName = document.createElement(tagName);
-  tagName.className = className;
-  return tagName;
+function userFunction(tagFunction, classFunction) {
+  var tagFunction = document.createElement(tagFunction);
+  tagFunction.classFunction = classFunction;
+  return tagFunction;
 }
 
 function cardText(forText, data) {
@@ -120,18 +120,18 @@ for (let i = 0; i <= data.length - 1; i++) {
     ` card d-inline-block col-12 col-lg-4 col-md-6 col-xl-3 px-2'`
   );
   const userContent = userFunction(`div`, `card-body`);
-  const userimg = userFunction(`img`, `card-img`);
-  userimg.src = data[i].src;
+  const userImg = userFunction(`img`, `card-img`);
+  userImg.src = data[i].src;
   const userName = userFunction(`h3`, `h5 mt-3`);
   cardText(userName, [data[i].first_name + " " + data[i].last_name]);
   const userEmail = userFunction(`a`, `h5 mt-3`);
   cardText(userEmail, data[i].email);
   const userGender = userFunction(`p`, `h6`);
   cardText(userGender, data[i].gender);
-  const userIpAdres = userFunction(`p`, `text-bg-info rounded text-white ps-2`);
-  cardText(userIpAdres, data[i].ip_address);
-  userContent.append(userimg, userName, userEmail, userGender, userIpAdres);
+  const userAddress = userFunction(`p`, `text-bg-info rounded text-white ps-2`);
+  cardText(userAddress, data[i].ip_address);
+  userContent.append(userImg, userName, userEmail, userGender, userAddress);
   userItem.append(userContent);
-  ulContent.append(userItem);
-  ul.append(ulContent);
+  ulList.append(userItem);
+  ul.append(ulList);
 }
